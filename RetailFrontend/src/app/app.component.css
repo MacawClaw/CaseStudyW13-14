@@ -1,0 +1,7 @@
+app-navbar, router-outlet {
+    min-height: 100vh;
+    height: 100vh;
+}
+.page-container {
+    min-height: 100vh;
+}
