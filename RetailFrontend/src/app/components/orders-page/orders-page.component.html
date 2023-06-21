@@ -1,0 +1,19 @@
+<div class="orders-container">
+    <div class="orders-page p-4 mt-5">
+        <div class="header-text">
+            <h1>Your orders:</h1>
+        </div>
+        <div class="list-orders">
+            <div class="order-slot" *ngFor="let order of orderList">
+                <div class="main-order">
+                    <h1>{{order.orderNumber}}</h1>
+                    <p>{{order.status}}</p>
+                </div>
+        
+                <div class="product-price">
+                    <h2>{{order.total}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

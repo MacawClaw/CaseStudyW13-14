@@ -1,0 +1,34 @@
+<div class="order-container">
+    <div class="order-page p-4 mt-5">
+        <div class="order-top-header">
+            <div class="order-header">
+                <h1>{{order.orderNumber}}</h1>
+                <h2>{{order.status}}</h2>
+            </div>
+
+            <div class="cancel-order">
+                <button type="submit" class="btn btn-danger my-4">Request Cancellation</button>
+            </div>
+        </div>
+        
+        <div class="list-products" *ngFor="let product of productList">
+            <div class="list-product-description">
+                <p>{{product.decription}}</p>
+            </div>
+    
+            <div class="list-product-price">
+                <h2>{{product.price}}</h2>
+            </div>
+        </div>
+
+        <div class="user-info">
+            <h3>Shipping to:</h3>
+            <p>{{user.address}}</p>
+        </div>
+
+        <div class="total">
+            <h3>Total:</h3>
+            <p>{{order.total}}</p>
+        </div>
+    </div>
+</div>
