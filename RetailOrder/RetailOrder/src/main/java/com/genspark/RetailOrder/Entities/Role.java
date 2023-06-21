@@ -9,10 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "role")
 public class Role
 {
@@ -28,6 +27,6 @@ public class Role
     @Column(name = "role_name")
     private String roleName;
 
-    @Column(name = "enabled")
-    private boolean enabled;
+//    @Column(name = "enabled")
+//    private boolean enabled;
 }

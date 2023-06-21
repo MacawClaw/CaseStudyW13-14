@@ -4,13 +4,14 @@ import lombok.*;
 import org.hibernate.annotations.Columns;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "user")
 public class User
 {
@@ -29,7 +30,7 @@ public class User
     private String email;
 
     @Column(name = "user_password")
-    private String passwrod;
+    private String password;
 
     @Column(name = "user_phone")
     private String phone;
@@ -37,22 +38,16 @@ public class User
     @Column(name = "user_address")
     private String address;
 
-    // create role entity first to complete
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id_fk", referencedColumnName = "role_id")
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id_fk", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id_fk", referencedColumnName = "role_id"))
+    private List<Role> role = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", email='" + email + '\'' +
-                ", passwrod='" + passwrod + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", role=" + role +
-                '}';
+    public User(String email, String password, List<Role> role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 }

@@ -6,10 +6,9 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "department")
 public class Department
 {
@@ -23,13 +22,4 @@ public class Department
 
     @Column(name = "dept_desc")
     private String deptDesc;
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "deptId=" + deptId +
-                ", deptName='" + deptName + '\'' +
-                ", deptDesc='" + deptDesc + '\'' +
-                '}';
-    }
 }

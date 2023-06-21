@@ -2,17 +2,14 @@ package com.genspark.RetailOrder.Entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "orders")
 public class Order
 {
@@ -22,4 +19,16 @@ public class Order
 
     @Column(name = "status")
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_fk")
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "order_prod",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "prod_id")
+    )
+    private List<Product> products;
 }

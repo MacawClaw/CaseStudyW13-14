@@ -3,13 +3,13 @@ package com.genspark.RetailOrder.Entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "product")
 public class Product
 {
@@ -30,19 +30,10 @@ public class Product
     @Column(name = "price")
     private int price;
 
-    @ManyToOne
+    @ManyToOne  //(cascade = CascadeType.ALL)
     @JoinColumn(name = "dept_id_fk")
     private Department department;
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "prodId=" + prodId +
-                ", prodName='" + prodName + '\'' +
-                ", prodDesc='" + prodDesc + '\'' +
-                ", vendor='" + vendor + '\'' +
-                ", price='" + price + '\'' +
-                ", department=" + department +
-                '}';
-    }
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST)
+    private List<Order> orders;
 }
