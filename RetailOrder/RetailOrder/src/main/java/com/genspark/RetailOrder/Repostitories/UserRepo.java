@@ -1,0 +1,25 @@
+package com.genspark.RetailOrder.Repostitories;
+
+import com.genspark.RetailOrder.DTOs.UserDTO;
+import com.genspark.RetailOrder.Entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.query.Param;
+
+import java.util.Optional;
+
+@EnableJpaRepositories
+public interface UserRepo extends JpaRepository<User, Integer>
+{
+    @Query(value = "SELECT * FROM user WHERE user_id = :userId", nativeQuery = true)
+    User findByUserId(@Param("userId") int userId);
+
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
+
+    @Query(value = "DELETE FROM user_role uc WHERE uc.user_id_fk = ?1 and uc.role_id_fk =?2", nativeQuery = true)
+    @Modifying
+    void deleteUser(int userId, int roleId);
+}
