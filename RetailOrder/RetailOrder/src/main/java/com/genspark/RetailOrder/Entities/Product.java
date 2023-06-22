@@ -1,5 +1,6 @@
 package com.genspark.RetailOrder.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,5 +36,6 @@ public class Product
     private Department department;
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private List<Order> orders;
 }
