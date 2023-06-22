@@ -37,6 +37,7 @@ public class SecurityConfig
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/users/**").permitAll()
                 .antMatchers("/api/prods/**").permitAll()
+                .antMatchers("/api/order/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
