@@ -32,22 +32,4 @@ export class OrderService {
     return this.http.put<Order>(`${this.apiUrl}/api/v1/admin/saveorder`, order);
   }
 
-  /*
-  enrollCourse(orderId:number, userId:number){
-    let bodyData:any;
-    console.log(orderId);
-    console.log(userId);
-    this.http.post(`${this.apiUrl}/api/v1/admin/savecoursestudent/${orderId}/${userId}`, bodyData, {responseType: 'text'})
-    .subscribe((result) => {
-      console.log(result);
-    });    
-  }
-
-  isStudentAlreadyEnrolled(orderId:number, userId: number) {
-    
-    return this.http.get(`${this.apiUrl}/api/v1/admin/isstudentenrolled/${orderId}/${userId}`);
-    
-  }
-  */
-
 }
