@@ -1,1 +1,18 @@
- <p>home works!</p>
+<div class="Name-Categories">
+    <div class="welcome">
+      <div class="container">
+      <div class="greeting">
+        <h2>WELCOME <span *ngIf="!isLoggedIn()">TO OUR PAGE <br>Start your Shopping Experience!</span></h2>
+        <h2><span *ngIf="isLoggedIn()">{{userFirstName}}</span></h2>
+        <h4><span *ngIf="isLoggedIn()">[{{userRole}}]</span></h4>
+      </div>
+    </div>
+    </div>
+
+    <div class="categories">
+        <div class="department" *ngFor="let department of departmentList">
+            <h1><a (click)="navigateToDepartment(department)">{{department}}</a></h1>
+        </div>
+
+    </div>
+  </div>

@@ -1,0 +1,20 @@
+<div class="category-container">
+    <div class="category-page p-4 mt-5">
+        <div class="header-text">
+            <h1>{{department}}</h1>
+        </div>
+        <div class="list-products">
+            <div class="product-slot" *ngFor="let product of productList">
+                <div class="main-product">
+                    <h1><a (click)="navigateToProduct(product.productName)">{{product.productName}}</a></h1>
+                    <p>{{product.description}}</p>
+                </div>
+        
+                <div class="product-price">
+                    <h2>{{product.price}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
